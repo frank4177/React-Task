@@ -3,11 +3,15 @@ import MkdSDK from "./utils/MkdSDK";
 
 export const AuthContext = React.createContext();
 
+// If you want to persit authentication and role, you can set this as corresponding values
+//const auth = localStorage.getItem("auth"
+//const role = localStorage.getItem("role")
+
 const initialState = {
-  isAuthenticated: localStorage.getItem("auth"),
+  isAuthenticated: false,
   user: null,
   token: null,
-  role: localStorage.getItem("role"),
+  role: null,
 };
 
 const reducer = (state, action) => {
@@ -70,12 +74,11 @@ const AuthProvider = ({ children }) => {
   }, [state.token]);
 
 
-  
-  React.useEffect(() => { 
-    localStorage.setItem("auth", state.isAuthenticated);
-    localStorage.setItem("role", state.role);
-      
-    }, [state.role, state.isAuthenticated])
+  // If you want to persit authentication and role, you can uncomment this and line 6 above
+  // React.useEffect(() => { 
+  //   localStorage.setItem("auth", state.isAuthenticated);
+  //   localStorage.setItem("role", state.role);
+  //   }, [state.role, state.isAuthenticated])
 
 
 
