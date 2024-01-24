@@ -12,8 +12,7 @@ import { ArrowDownIcon } from "../assets/Icons";
 const LeaderboardSection = () => {
   const [cards, setCards] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1)
-  
+  const [totalPages, setTotalPages] = useState(0)
 
   const moveCard = useCallback((dragIndex, hoverIndex) => {
     setCards((prevCards) =>
@@ -38,9 +37,8 @@ const LeaderboardSection = () => {
   }, []);
 
   const paginateNext = ()=>{
-    if (totalPages <= totalPages) {
+    if (currentPage < totalPages) {
     setCurrentPage(prev=> prev +1)
-      
     }
   }
 
